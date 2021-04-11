@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      3.7k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34
+      40
        分钟
     </span>
   
@@ -407,7 +407,7 @@
 <tr>
 <td>ZF</td>
 <td>零值标志位</td>
-<td>运算结果为9，则置一</td>
+<td>运算结果为0，则置一</td>
 </tr>
 <tr>
 <td>SF</td>
@@ -480,6 +480,7 @@
 <h5 id="寄存器间接寻址方式"><a href="#寄存器间接寻址方式" class="headerlink" title="寄存器间接寻址方式"></a>寄存器间接寻址方式</h5><p>内存操作数的偏移量由地址指针寄存器BX、BP、SI、DI<strong>其中之一</strong>提供，则称该操作数为<strong>寄存器间接寻址方式</strong></p>
 <p>其中    BX、BP提供的是<strong>基址分量</strong></p>
 <p>​            SI、DI提供的是<strong>变址分量</strong></p>
+<p><em><strong>EA=(BX\BP\SI\DI)</strong></em></p>
 <table>
 <thead>
 <tr>
@@ -524,6 +525,7 @@
 <p>源操作数为基址寻址方式，基址分量由BP提供，段基值默认为SS提供，位移分量为100H；目的操作数为寄存器寻址方式</p>
 <p>MOV    BYTE PTR[SI]220H,    30H</p>
 <p>源操作数为立即数寻址方式；目的操作数为变址寻址方式，变址分量由SI提供，段基值默认由 DS提供，位移分量为220H。其中BYTE PTR代表内存单元的字节类型。</p>
+<p><em><strong>EA=(BX\BP\SI\DI)+DISP</strong></em></p>
 <p><em><strong>注意：BX、SI、DI默认与DS搭配，BP默认与SS搭配</strong></em></p>
 <h5 id="基址变址寻址"><a href="#基址变址寻址" class="headerlink" title="基址变址寻址"></a>基址变址寻址</h5><p>如果偏移量由<strong>基址分量、变址分量和偏移量</strong>组成，那么该操作数为基址变址寻址。（齐全了）</p>
 <p>例：</p>
@@ -532,6 +534,53 @@
 <h4 id="其他寻址方式"><a href="#其他寻址方式" class="headerlink" title="其他寻址方式"></a>其他寻址方式</h4><h5 id="串操作寻址"><a href="#串操作寻址" class="headerlink" title="串操作寻址"></a>串操作寻址</h5><p>若指令为串操作指令，则<strong>内存操作数</strong>的寻址方式为串操作数寻址方式</p>
 <h5 id="端口寻址方式"><a href="#端口寻址方式" class="headerlink" title="端口寻址方式"></a>端口寻址方式</h5><p>在读写端口的指令中，与端口有关的操作数均为<strong>端口寻址方式</strong></p>
 <h5 id="隐含寻址方式"><a href="#隐含寻址方式" class="headerlink" title="隐含寻址方式"></a>隐含寻址方式</h5><p>有一些指令存在对内存单元的隐含使用，这种方式称为<strong>隐含寻址方式</strong></p>
+<h2 id="基本指令系统"><a href="#基本指令系统" class="headerlink" title="基本指令系统"></a>基本指令系统</h2><h3 id="传送类指令"><a href="#传送类指令" class="headerlink" title="传送类指令"></a>传送类指令</h3><p>功能：将源操作数复制一份，送止目的操作数保存，除非<strong>标志寄存器</strong>是指令的<strong>目的操作数</strong>，否则传送类指令不影响任何标志位</p>
+<h4 id="MOV数据传送指令"><a href="#MOV数据传送指令" class="headerlink" title="MOV数据传送指令"></a>MOV数据传送指令</h4><p>格式：MOV    DEST,    SCR</p>
+<p>功能：(SCR)=&gt;DSET</p>
+<p>注意：</p>
+<ol>
+<li>双操作数中只能有一个是<strong>内存操作数</strong></li>
+<li>不能对<strong>段寄存器(CS\DS\SS\ES)<strong>直接传送立即数,需要使用</strong>通用寄存器</strong>中转</li>
+</ol>
+<h4 id="XCHG交换指令"><a href="#XCHG交换指令" class="headerlink" title="XCHG交换指令"></a>XCHG交换指令</h4><p>格式：XCHG    DEST,    SRC</p>
+<p>功能：DEST=&gt;SRC同时SRC=&gt;DEST</p>
+<p>注意：</p>
+<ol>
+<li>指令中不能使用立即数</li>
+<li>不能使用段寄存器</li>
+<li>不能同时出现两个内存操作数</li>
+</ol>
+<h4 id="LAHF取标志位指令"><a href="#LAHF取标志位指令" class="headerlink" title="LAHF取标志位指令"></a>LAHF取标志位指令</h4><p>格式：LAHF</p>
+<p>功能：（FR)_(0~7)=&gt;AH</p>
+<h4 id="SAHF存标志位指令"><a href="#SAHF存标志位指令" class="headerlink" title="SAHF存标志位指令"></a>SAHF存标志位指令</h4><p>格式：SAHF</p>
+<p>功能：AH=&gt;FR_(0~7)</p>
+<h4 id="PUSH入栈指令"><a href="#PUSH入栈指令" class="headerlink" title="PUSH入栈指令"></a>PUSH入栈指令</h4><p>格式：PUSH    SRC</p>
+<p>功能：(SP)-2=&gt;SP    ;(SRC)=&gt;(SP)</p>
+<p>原理：先将（SP）减2，使之指向一个空的堆栈，再将源操作数保存到该堆栈。</p>
+<p>注意：</p>
+<ol>
+<li>源操作数<strong>必须为16位的寄存器或内存单元</strong>，不能为8位的储存单元或立即数</li>
+</ol>
+<h4 id="POP出栈指令"><a href="#POP出栈指令" class="headerlink" title="POP出栈指令"></a>POP出栈指令</h4><p>格式:POP    DEST</p>
+<p>功能:(SP)=&gt;DEST    ;SP+2=&gt;SP</p>
+<p>原理：先将栈顶的数据传送到目的操作数保存，再将SP加2.</p>
+<p>注意：</p>
+<ol>
+<li>目的操作数<strong>必须为16位的寄存器或内存单元</strong>，不能为8位的储存单元或立即数</li>
+</ol>
+<h4 id="PUSHF标志压栈指令"><a href="#PUSHF标志压栈指令" class="headerlink" title="PUSHF标志压栈指令"></a>PUSHF标志压栈指令</h4><p>格式：PUSHF</p>
+<p>功能：SP-2=&gt;SP    ;FR=&gt;SP</p>
+<h4 id="POPF标志出栈指令"><a href="#POPF标志出栈指令" class="headerlink" title="POPF标志出栈指令"></a>POPF标志出栈指令</h4><p>格式：POPF</p>
+<p>功能：SP=&gt;FR    ;SP+2=&gt;SP</p>
+<h4 id="LEA装入有效地址指令"><a href="#LEA装入有效地址指令" class="headerlink" title="LEA装入有效地址指令"></a>LEA装入有效地址指令</h4><p>格式：LEA    DEST,    SRC</p>
+<p>功能：EA_(SRC)=&gt;DEST</p>
+<p>注意：</p>
+<ol>
+<li>源操作数只能是16位内存单元</li>
+<li>目的操作数只能是16位通用寄存器</li>
+</ol>
+<h4 id="LSD装入地址指针指令"><a href="#LSD装入地址指针指令" class="headerlink" title="LSD装入地址指针指令"></a>LSD装入地址指针指令</h4><p>格式：LDS    DEST,    SRC </p>
+<p>​            LES    DEST,    SRC</p>
 
             </div>
             <hr>
