@@ -233,12 +233,6 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/11/%E7%AC%AC%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第一张图片</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -254,6 +248,38 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Xmd0Y4b0U9TiMdnf2aCpbFjD-gzGzoHsz",
+          app_key: "H1Fdr60yIVN9E3Ggzer6gONR",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>
