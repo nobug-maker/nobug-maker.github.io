@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>部署问题及解决方法</title>
+    <link href="/2021/04/13/%E9%83%A8%E7%BD%B2%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <url>/2021/04/13/%E9%83%A8%E7%BD%B2%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="部署问题及解决方法"><a href="#部署问题及解决方法" class="headerlink" title="部署问题及解决方法"></a>部署问题及解决方法</h1><p>1.</p><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pf">Failed <span class="hljs-keyword">to</span> connect <span class="hljs-keyword">to</span> github.com <span class="hljs-keyword">port</span> <span class="hljs-number">443</span>:<br></code></pre></td></tr></table></figure><p>使用指令</p><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tcl">git config --<span class="hljs-keyword">global</span> --<span class="hljs-keyword">unset</span> <span class="hljs-keyword">http</span>.proxy<br></code></pre></td></tr></table></figure><p>2.</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">OpenSSL SSL_read: <span class="hljs-keyword">Connection</span> was <span class="hljs-keyword">reset</span>, errno <span class="hljs-number">10054</span><br></code></pre></td></tr></table></figure><p>使用指令</p><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tcl">git config --<span class="hljs-keyword">global</span> <span class="hljs-keyword">http</span>.sslVerify <span class="hljs-string">&quot;false&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>4月13日</title>
     <link href="/2021/04/13/4%E6%9C%8813%E6%97%A5/"/>
     <url>/2021/04/13/4%E6%9C%8813%E6%97%A5/</url>
