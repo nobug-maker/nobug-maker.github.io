@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.1k 字
+      5.5k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      64
+      70
        分钟
     </span>
   
@@ -458,7 +458,7 @@
 
 
 
-<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>构造函数为对象在被创建时<strong>分配内存空间</strong>，利用给定的值去<strong>初始化对象的数据成员</strong>，把对象构造成一个特定的状态。</p>
+<h2 id="2-3构造函数和析构函数"><a href="#2-3构造函数和析构函数" class="headerlink" title="2.3构造函数和析构函数"></a>2.3构造函数和析构函数</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>构造函数为对象在被创建时<strong>分配内存空间</strong>，利用给定的值去<strong>初始化对象的数据成员</strong>，把对象构造成一个特定的状态。</p>
 <p>声明构造函数的格式：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">public</span>:<br>	类名(参数表);<br></code></pre></td></tr></table></figure>
 
@@ -497,7 +497,30 @@
 <li>析构函数名与类名相同，前面多家一个“~”</li>
 <li>无返回值和参数，不能重载</li>
 </ol>
+<h2 id="2-4对象数组"><a href="#2-4对象数组" class="headerlink" title="2.4对象数组"></a>2.4对象数组</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">Student *st = <span class="hljs-keyword">new</span> Student[<span class="hljs-number">45</span>];<br></code></pre></td></tr></table></figure>
 
+<h2 id="2-5对象指针"><a href="#2-5对象指针" class="headerlink" title="2.5对象指针"></a>2.5对象指针</h2><h3 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h3><p>this指针指向调用类函数的成员</p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CPoint::Move</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x1,<span class="hljs-keyword">int</span> y1)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">this</span>-&gt;x=x1;<br>	<span class="hljs-keyword">this</span>-&gt;y=y1;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-6静态成员"><a href="#2-6静态成员" class="headerlink" title="2.6静态成员"></a>2.6静态成员</h2><h3 id="2-6-1静态数据成员"><a href="#2-6-1静态数据成员" class="headerlink" title="2.6.1静态数据成员"></a>2.6.1静态数据成员</h3><p>在C++中类的数据成员如果被声明成为<code>static</code>,那么他就是静态数据成员，意味着<strong>它为该类的所有对象共享</strong></p>
+<p>静态数据成员不属于某一个对象，即使某个对象消亡了，静态数据成员还会在程序中存在</p>
+<p>可以将静态数据成员的访问权限设为<code>private</code>,使之更加安全</p>
+<p><strong>静态数据成员的初始化不能在构造函数中进行</strong></p>
+<p>静态数据成员的初始化是在类外经行的，格式如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">数据类型 类名：：静态数据成员名=初始值；<br></code></pre></td></tr></table></figure>
+
+<p>静态数据成员的访问格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">类名：：静态数据成员名；<br></code></pre></td></tr></table></figure>
+
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>    	<span class="hljs-built_in">Point</span>()<br>        &#123;<br>            x=<span class="hljs-number">0</span>;<br>            y=<span class="hljs-number">0</span>;<br>            counter++;<br>        &#125;<br>        ~<span class="hljs-built_in">Point</span>()<br>        &#123;<br>            counter--;<br>        &#125;<br>    <span class="hljs-keyword">private</span>:<br>    	<span class="hljs-keyword">int</span> x,y;<br>    <span class="hljs-keyword">public</span>:<br>    	<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> counter;<br>&#125;<br><span class="hljs-keyword">int</span> Point::counter=<span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//略</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-6-2静态成员函数"><a href="#2-6-2静态成员函数" class="headerlink" title="2.6.2静态成员函数"></a>2.6.2静态成员函数</h3><p><strong>用于访问静态数据成员</strong></p>
+<p>例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>    	<span class="hljs-built_in">Point</span>()<br>        &#123;<br>            x=<span class="hljs-number">0</span>;<br>            y=<span class="hljs-number">0</span>;<br>            counter++;<br>        &#125;<br>        ~<span class="hljs-built_in">Point</span>()<br>        &#123;<br>            counter--;<br>        &#125;<br>    	<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">GetCounter</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//静态成员函数的声明前面要加static</span><br>            <span class="hljs-keyword">return</span> counter;<br>        &#125;<br>    <span class="hljs-keyword">private</span>:<br>    	<span class="hljs-keyword">int</span> x,y;<br>    	<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> counter;<span class="hljs-comment">//将counter的访问权限设为private</span><br>&#125;<br><span class="hljs-keyword">int</span> Point::counter=<span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//略</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-7友元关系"><a href="#2-7友元关系" class="headerlink" title="2.7友元关系"></a>2.7友元关系</h2>
             </div>
             <hr>
             <div>
