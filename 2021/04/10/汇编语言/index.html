@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.7k 字
+      4.3k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      40
+      48
        分钟
     </span>
   
@@ -444,6 +444,12 @@
 </tr>
 </tbody></table>
 <p>前六个为<strong>状态标志</strong>，后三个为<strong>控制标志</strong></p>
+<p>CF:最高位出现进位</p>
+<p>AF:第三位出现进位</p>
+<p>SF:看作带符号数相加</p>
+<p>OF:是否出现溢出</p>
+<p>ZF:看运算结果</p>
+<p>PF:偶数个1</p>
 <h1 id="8086-8088基本指令系统"><a href="#8086-8088基本指令系统" class="headerlink" title="8086/8088基本指令系统"></a>8086/8088基本指令系统</h1><h2 id="汇编指令基本格式"><a href="#汇编指令基本格式" class="headerlink" title="汇编指令基本格式"></a>汇编指令基本格式</h2><p>构成汇编指令的基本元素包括<strong>操作助记符</strong>和<strong>操作数</strong></p>
 <p>前者指明指令的功能，后者指明指令操作的数据</p>
 <h3 id="基本格式——双操作数指令"><a href="#基本格式——双操作数指令" class="headerlink" title="基本格式——双操作数指令"></a>基本格式——双操作数指令</h3><p>MOV    AX，    BX</p>
@@ -473,54 +479,54 @@
 <li>变址寄存器提供的变址分量</li>
 </ol>
 <p>偏移量又称<strong>有效地址(effective address)</strong>,简称<strong>EA</strong>。</p>
-<h5 id="直接寻址方式"><a href="#直接寻址方式" class="headerlink" title="直接寻址方式"></a>直接寻址方式</h5><p>直接使用机器指令中位移量字段中的位移量作为内存操作数的偏移量</p>
+<h5 id="直接寻址方式"><a href="#直接寻址方式" class="headerlink" title="直接寻址方式"></a>直接寻址方式</h5><p>直接使用<strong>机器指令中位移量字段中的位移量</strong>作为内存操作数的偏移量</p>
 <p><em><strong>EA=DISP</strong></em></p>
-<p>DISP是指disparity，即位移量</p>
+<p>DISP是指disparity，即<strong>位移量</strong></p>
 <p>例：</p>
 <p>MOV    AL,    [1000H]</p>
-<p>这条指令忽略了段基值，默认使用DS提供段基值</p>
+<p>这条指令忽略了段基值，默认使用<strong>DS提供段基值</strong></p>
 <p>MOV    ES:[0100H],    BX</p>
-<p>这条指令指明使用ES提供段基值</p>
+<p>这条指令<strong>指明使用ES提供段基值</strong></p>
 <p>MOV    VAR1,    BL</p>
-<p>这条指令中的VAR1是一个变量名，实质为<strong>符号位移量</strong>，在会汇编后将被替换成数值位移量，二者在实质上是相同的。同样的这条指令忽略的段基值，由DS提供</p>
+<p>这条指令中的VAR1是一个<strong>变量名</strong>，实质为<strong>符号位移量</strong>，在会汇编后将被替换成数值位移量，二者在实质上是相同的。同样的这条指令忽略的段基值，由DS提供</p>
 <p>MOV    VAR1+2,    AL</p>
-<p>这条指令的目标操作数的VAR1后面有一个“+2”，表示偏移量为VAR1+2.</p>
-<h5 id="寄存器间接寻址方式"><a href="#寄存器间接寻址方式" class="headerlink" title="寄存器间接寻址方式"></a>寄存器间接寻址方式</h5><p>内存操作数的偏移量由地址指针寄存器BX、BP、SI、DI<strong>其中之一</strong>提供，则称该操作数为<strong>寄存器间接寻址方式</strong></p>
-<p>其中    BX、BP提供的是<strong>基址分量</strong></p>
+<p>这条指令的目标操作数的VAR1后面有一个“+2”，表示<strong>偏移量为VAR1+2</strong>.</p>
+<h5 id="寄存器间接寻址方式"><a href="#寄存器间接寻址方式" class="headerlink" title="寄存器间接寻址方式"></a>寄存器间接寻址方式</h5><p>内存操作数的偏移量由地址指针寄存器BX、<strong>BP</strong>、SI、DI<strong>其中之一</strong>提供，则称该操作数为<strong>寄存器间接寻址方式</strong></p>
+<p>其中    BX、<em><strong>BP</strong></em>提供的是<strong>基址分量</strong></p>
 <p>​            SI、DI提供的是<strong>变址分量</strong></p>
 <p><em><strong>EA=(BX\BP\SI\DI)</strong></em></p>
 <table>
 <thead>
 <tr>
-<th>寄存器简写</th>
-<th>寄存器名</th>
-<th>与段寄存器的搭配关系</th>
+<th align="center">寄存器简写</th>
+<th align="center">寄存器名</th>
+<th align="center">与段寄存器的搭配关系</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>BX</td>
-<td>基址寄存器</td>
-<td>默认与DS搭配，可更改</td>
+<td align="center">BX</td>
+<td align="center">基址寄存器</td>
+<td align="center">默认与DS搭配，可更改</td>
 </tr>
 <tr>
-<td>SP</td>
-<td>堆栈指针寄存器</td>
-<td><em><strong>只能与SS搭配</strong></em></td>
+<td align="center">SP</td>
+<td align="center">堆栈指针寄存器</td>
+<td align="center"><em><strong>只能与SS搭配</strong></em></td>
 </tr>
 <tr>
-<td>BP</td>
-<td>基址指针寄存器</td>
-<td><strong>默认与SS搭配</strong>，可更改</td>
+<td align="center">BP</td>
+<td align="center">基址指针寄存器</td>
+<td align="center"><strong>默认与SS搭配</strong>，可更改</td>
 </tr>
 <tr>
-<td>SI</td>
-<td>源变址寄存器</td>
-<td>默认与DS搭配，可更改</td>
+<td align="center">SI</td>
+<td align="center">源变址寄存器(Source Index)</td>
+<td align="center">默认与DS搭配，可更改</td>
 </tr>
 <tr>
-<td>DI</td>
-<td>目的变址寄存器</td>
-<td>默认与DS搭配，可更改；在串操作指令中只能与ES搭配</td>
+<td align="center">DI</td>
+<td align="center">目的变址寄存器(Destination Index)</td>
+<td align="center">默认与DS搭配，可更改；在串操作指令中只能与ES搭配</td>
 </tr>
 </tbody></table>
 <p>例：</p>
@@ -555,12 +561,12 @@
 <p>注意：</p>
 <ol>
 <li>指令中不能使用立即数</li>
-<li>不能使用段寄存器</li>
+<li>不能使用<strong>段寄存器</strong></li>
 <li>不能同时出现两个内存操作数</li>
 </ol>
-<h4 id="LAHF取标志位指令"><a href="#LAHF取标志位指令" class="headerlink" title="LAHF取标志位指令"></a>LAHF取标志位指令</h4><p>格式：LAHF</p>
+<h4 id="LAHF-Load-register-AH-from-FR-取标志位指令"><a href="#LAHF-Load-register-AH-from-FR-取标志位指令" class="headerlink" title="LAHF(Load register AH from FR)取标志位指令"></a>LAHF(Load register AH from FR)取标志位指令</h4><p>格式：LAHF</p>
 <p>功能：（FR)_(0~7)=&gt;AH</p>
-<h4 id="SAHF存标志位指令"><a href="#SAHF存标志位指令" class="headerlink" title="SAHF存标志位指令"></a>SAHF存标志位指令</h4><p>格式：SAHF</p>
+<h4 id="SAHF-Store-register-AH-into-FR-存标志位指令"><a href="#SAHF-Store-register-AH-into-FR-存标志位指令" class="headerlink" title="SAHF(Store register AH into FR)存标志位指令"></a>SAHF(Store register AH into FR)存标志位指令</h4><p>格式：SAHF</p>
 <p>功能：AH=&gt;FR_(0~7)</p>
 <h4 id="PUSH入栈指令"><a href="#PUSH入栈指令" class="headerlink" title="PUSH入栈指令"></a>PUSH入栈指令</h4><p>格式：PUSH    SRC</p>
 <p>功能：(SP)-2=&gt;SP    ;(SRC)=&gt;(SP)</p>
@@ -580,7 +586,7 @@
 <p>功能：SP-2=&gt;SP    ;FR=&gt;SP</p>
 <h4 id="POPF标志出栈指令"><a href="#POPF标志出栈指令" class="headerlink" title="POPF标志出栈指令"></a>POPF标志出栈指令</h4><p>格式：POPF</p>
 <p>功能：SP=&gt;FR    ;SP+2=&gt;SP</p>
-<h4 id="LEA装入有效地址指令"><a href="#LEA装入有效地址指令" class="headerlink" title="LEA装入有效地址指令"></a>LEA装入有效地址指令</h4><p>格式：LEA    DEST,    SRC</p>
+<h4 id="LEA装入有效地址指令"><a href="#LEA装入有效地址指令" class="headerlink" title="LEA装入有效地址指令"></a>LEA装入<strong>有效地址</strong>指令</h4><p>格式：LEA    DEST,    SRC</p>
 <p>功能：EA_(SRC)=&gt;DEST</p>
 <p>注意：</p>
 <ol>
@@ -590,6 +596,79 @@
 <h4 id="LSD装入地址指针指令"><a href="#LSD装入地址指针指令" class="headerlink" title="LSD装入地址指针指令"></a>LSD装入地址指针指令</h4><p>格式：</p>
 <p>LDS    DEST,    SRC </p>
 <p>LES    DEST,    SRC    </p>
+<h3 id="算术运算类指令"><a href="#算术运算类指令" class="headerlink" title="算术运算类指令"></a>算术运算类指令</h3><h4 id="ADD加法指令"><a href="#ADD加法指令" class="headerlink" title="ADD加法指令"></a>ADD加法指令</h4><p>格式：ADD    DEST,    SRC</p>
+<p>功能：(SRC)+(DEST)=&gt;DEST或SRC+(DEST)=&gt;DEST</p>
+<p>所有标志位都受到影响</p>
+<p>注意：</p>
+<ol>
+<li>加法器设计不管数据的类型</li>
+</ol>
+<h4 id="ADC带进位加法指令"><a href="#ADC带进位加法指令" class="headerlink" title="ADC带进位加法指令"></a>ADC带进位加法指令</h4><p>格式：ADC    DEST,    SRC</p>
+<p>功能：(SRC)+(DEST)+<strong>(CF)</strong>=&gt;DEST</p>
+<p>ADC指令可以完成<strong>更高位数</strong>的加法</p>
+<h4 id="INC加一指令"><a href="#INC加一指令" class="headerlink" title="INC加一指令"></a>INC加一指令</h4><p>格式：INC    DEST</p>
+<p>功能：(DEST)+1=&gt;DEST</p>
+<p>注意：</p>
+<ol>
+<li><strong>不影响CF标志</strong></li>
+<li><strong>会影响到OF</strong>0111 1111-&gt;1000 0000 OF被置一</li>
+<li>DEST不能是立即数</li>
+</ol>
+<blockquote>
+<p>•为何设计为不影响CF？</p>
+<p>•     mov  bx, 0                   ;完成80-bit操作数相加</p>
+<p>•     mov  cx, 5</p>
+<p>•     clc                                #清零CF</p>
+<p>•lop1: mov  ax, tab1[bx]    #加数数组</p>
+<p>•     adc  ax, tab2[bx]         #被加数数组 ; 生成有效 CF</p>
+<p>•     mov  res[bx], ax</p>
+<p>•     inc   bx                         ; 不影响 CF</p>
+<p>•     inc   bx</p>
+<p>•     loop  lop1                    ; 不影响 FR,同时将CX减一</p>
+</blockquote>
+<h4 id="SUB减法指令"><a href="#SUB减法指令" class="headerlink" title="SUB减法指令"></a>SUB减法指令</h4><p>格式：SUB    DEST,    SRC</p>
+<p>功能：DEST-SCR=&gt;DEST</p>
+<h4 id="SBB带进位的减法指令"><a href="#SBB带进位的减法指令" class="headerlink" title="SBB带进位的减法指令"></a>SBB带进位的减法指令</h4><p>格式：</p>
+<p>功能：(DEST)-(SRC)-(CF)=&gt;DEST</p>
+<h4 id="DEC减一指令"><a href="#DEC减一指令" class="headerlink" title="DEC减一指令"></a>DEC减一指令</h4><p>格式：DEC    DEST</p>
+<p>功能：DEST-1=&gt;DEST</p>
+<h4 id="NEG求相反数指令"><a href="#NEG求相反数指令" class="headerlink" title="NEG求相反数指令"></a>NEG求相反数指令</h4><p>格式：NEG    DEST</p>
+<p>功能:0-DEST=&gt;DEST</p>
+<p>注意：</p>
+<ol>
+<li>影响6个标志位</li>
+<li>-128和-32768取反后<strong>OF被置一</strong>，且只有这种情况</li>
+<li>如果运算结果为零，则CF为0；如果运算结果非零，则CF为1</li>
+</ol>
+<blockquote>
+<p>•例 在DAW+2，DAW字单元存放有一个32位带符号数，DAW中存放的是低16位，求这个数的相反数并存入原单元中可用以下指令：</p>
+<p>•NEG DAW                        #低16位直接求反</p>
+<p>•MOV AX，0</p>
+<p>•SBB  AX，DAW+2            #高16位用SBB</p>
+<p>•MOV DAW+2，AX</p>
+</blockquote>
+<h4 id="CMP比较指令"><a href="#CMP比较指令" class="headerlink" title="CMP比较指令"></a>CMP比较指令</h4><p>格式：CMP    DEST,    SRC</p>
+<p>功能：(DEST)-(SRC)</p>
+<p>不回送运算结果，只改变FR</p>
+<h3 id="位操作类指令"><a href="#位操作类指令" class="headerlink" title="位操作类指令"></a>位操作类指令</h3><p>包括<strong>运算指令</strong>和<strong>位移指令</strong></p>
+<h4 id="AND与运算指令（取位）"><a href="#AND与运算指令（取位）" class="headerlink" title="AND与运算指令（取位）"></a>AND与运算指令（取位）</h4><p>格式：AND    DEST,    SRC</p>
+<p>功能：(DEST)&amp;(SRC)=&gt;DEST</p>
+<p>注意：</p>
+<ol>
+<li>SF\ZF\PF与运算指令结果相同</li>
+<li>CF\OF强制置零</li>
+<li>AF不确定</li>
+</ol>
+<h4 id="OR或运算（置位）"><a href="#OR或运算（置位）" class="headerlink" title="OR或运算（置位）"></a>OR或运算（置位）</h4><p>格式：OR    DESR</p>
+<h4 id="XOR异或指令（位求反）"><a href="#XOR异或指令（位求反）" class="headerlink" title="XOR异或指令（位求反）"></a>XOR异或指令（位求反）</h4><p>格式：XOR    DEST,    SRC</p>
+<h4 id="NOT非运算"><a href="#NOT非运算" class="headerlink" title="NOT非运算"></a>NOT非运算</h4><p>格式：NOT    DEST</p>
+<p>注意：</p>
+<ol>
+<li>不进ALU,<strong>不影响标志位</strong>.</li>
+</ol>
+<h4 id="TEXT测试指令"><a href="#TEXT测试指令" class="headerlink" title="TEXT测试指令"></a>TEXT测试指令</h4><p>格式:TEXT    DEST,    SRC</p>
+<p>功能：(DEST)&amp;(SRC)</p>
+<p>只进行运算，改变FR，不保留结果</p>
 
             </div>
             <hr>
