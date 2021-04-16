@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.5k 字
+      5.9k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      70
+      75
        分钟
     </span>
   
@@ -213,7 +213,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 天前
+                  本文最后更新于：1 分钟前
                 
               </p>
             
@@ -526,7 +526,24 @@
 <p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>    	<span class="hljs-built_in">Point</span>()<br>        &#123;<br>            x=<span class="hljs-number">0</span>;<br>            y=<span class="hljs-number">0</span>;<br>            counter++;<br>        &#125;<br>        ~<span class="hljs-built_in">Point</span>()<br>        &#123;<br>            counter--;<br>        &#125;<br>    	<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">GetCounter</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//静态成员函数的声明前面要加static</span><br>            <span class="hljs-keyword">return</span> counter;<br>        &#125;<br>    <span class="hljs-keyword">private</span>:<br>    	<span class="hljs-keyword">int</span> x,y;<br>    	<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> counter;<span class="hljs-comment">//将counter的访问权限设为private</span><br>&#125;<br><span class="hljs-keyword">int</span> Point::counter=<span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//略</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="2-7友元关系"><a href="#2-7友元关系" class="headerlink" title="2.7友元关系"></a>2.7友元关系</h2>
+<h2 id="2-7友元关系"><a href="#2-7友元关系" class="headerlink" title="2.7友元关系"></a>2.7友元关系</h2><h3 id="2-7-1友元函数"><a href="#2-7-1友元函数" class="headerlink" title="2.7.1友元函数"></a>2.7.1友元函数</h3><p>由关键字<code>friend</code>修饰</p>
+<p>在类中声明，但不属于该类的成员函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cpoint</span></span><br><span class="hljs-class">&#123;</span><br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-built_in">Cpoint</span>(<span class="hljs-keyword">double</span> xx=<span class="hljs-number">0</span>,<span class="hljs-keyword">double</span> yy=<span class="hljs-number">0</span>)<br>		&#123;<br>			x=xx;<br>			y=yy;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Getx</span><span class="hljs-params">()</span></span><br><span class="hljs-function">		</span>&#123;<br>			<span class="hljs-keyword">return</span> x;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Gety</span><span class="hljs-params">()</span></span><br><span class="hljs-function">		</span>&#123;<br>			<span class="hljs-keyword">return</span> y;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">double</span> <span class="hljs-title">fDist</span><span class="hljs-params">(Cpoint *p1,Cpoint *p2)</span></span>;<span class="hljs-comment">//友元函数</span><br>    <span class="hljs-keyword">private</span>:<br>    	<span class="hljs-keyword">double</span> x,y;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">fDist</span><span class="hljs-params">(Cpoint *p1,Cpoint *p2)</span><span class="hljs-comment">//注意。这里友元函数的实现</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">double</span> x=<span class="hljs-built_in"><span class="hljs-keyword">double</span></span>(p1-&gt;x-p2-&gt;x);<span class="hljs-comment">//友元函数可以直接访问所属类的私有成员</span><br>    <span class="hljs-keyword">double</span> y=<span class="hljs-built_in"><span class="hljs-keyword">double</span></span>(p1-&gt;y-p2-&gt;y);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>(x*x+y*y);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//略</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>友元函数可以直接访问所属类的私有成员</strong></p>
+<p>注意：</p>
+<ol>
+<li>友元函数<code>fDist</code>不是类<code>Cpoint</code>的成员函数，在类外实现的时候不能写成<code>double Cpoint::fDist(Cpoint *p1,Cpoint *p2)。</code></li>
+<li>友元函数无<code>this</code>指针，如要改变所属类的私有成员，应将该私有成员作为参数传递给友元函数。</li>
+<li>友元函数的声明可以放在<code>public</code>区，也可以放在<code>private</code>区，不受类的访问权限限制。</li>
+<li>如果一个类A的友元函数是另一个类A的成员函数，那么在<strong>声明</strong>友元关系的时候要在函数名前加<code>B::</code></li>
+</ol>
+<h3 id="友元类"><a href="#友元类" class="headerlink" title="友元类"></a>友元类</h3><p>如果类B是类A的友元函数，那么类B的<strong>所有成员函数</strong>都是类A的友元函数</p>
+<p>声明如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-comment">//略</span><br>    <span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>;</span><span class="hljs-comment">//B为A的友元类</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><em>当下CPU的运行速度越来越快，我们不太推荐使用友元。</em></p>
+
             </div>
             <hr>
             <div>
