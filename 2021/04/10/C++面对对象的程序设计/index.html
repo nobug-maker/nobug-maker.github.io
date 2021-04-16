@@ -213,7 +213,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 分钟前
+                  本文最后更新于：几秒前
                 
               </p>
             
@@ -538,7 +538,7 @@
 <li>友元函数的声明可以放在<code>public</code>区，也可以放在<code>private</code>区，不受类的访问权限限制。</li>
 <li>如果一个类A的友元函数是另一个类A的成员函数，那么在<strong>声明</strong>友元关系的时候要在函数名前加<code>B::</code></li>
 </ol>
-<h3 id="友元类"><a href="#友元类" class="headerlink" title="友元类"></a>友元类</h3><p>如果类B是类A的友元函数，那么类B的<strong>所有成员函数</strong>都是类A的友元函数</p>
+<h3 id="2-7-2友元类"><a href="#2-7-2友元类" class="headerlink" title="2.7.2友元类"></a>2.7.2友元类</h3><p>如果类B是类A的友元函数，那么类B的<strong>所有成员函数</strong>都是类A的友元函数</p>
 <p>声明如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span><br><span class="hljs-class">&#123;</span><br>    <span class="hljs-comment">//略</span><br>    <span class="hljs-keyword">friend</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span>;</span><span class="hljs-comment">//B为A的友元类</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
