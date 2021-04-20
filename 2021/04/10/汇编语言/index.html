@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.4k 字
+      4.8k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      70
+      76
        分钟
     </span>
   
@@ -213,7 +213,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 分钟前
+                  本文最后更新于：5 小时前
                 
               </p>
             
@@ -450,12 +450,12 @@
 </tr>
 </tbody></table>
 <p>前六个为<strong>状态标志</strong>，后三个为<strong>控制标志</strong></p>
-<p>CF:最高位出现进位</p>
-<p>AF:第三位出现进位</p>
-<p>SF:看作带符号数相加</p>
-<p>OF:是否出现溢出</p>
-<p>ZF:看运算结果</p>
-<p>PF:偶数个1</p>
+<p>CF:最高位出现进位，此时将数据解读为<strong>无符号数</strong></p>
+<p>AF:第三位出现进位，此时将数据解读为<strong>无符号数</strong></p>
+<p>SF:将操作数解释为<strong>补码</strong>，与运算结果最高位保持一致，但补码运算溢出时SF无意义</p>
+<p>OF:将操作数解释为<strong>补码</strong>，如溢出，则变为“1”</p>
+<p>ZF:看运算结果，如全为“0”，则变为”1”</p>
+<p>PF:偶数个1，则变为“1”</p>
 <h1 id="8086-8088基本指令系统"><a href="#8086-8088基本指令系统" class="headerlink" title="8086/8088基本指令系统"></a>8086/8088基本指令系统</h1><h2 id="汇编指令基本格式"><a href="#汇编指令基本格式" class="headerlink" title="汇编指令基本格式"></a>汇编指令基本格式</h2><p>构成汇编指令的基本元素包括<strong>操作助记符</strong>和<strong>操作数</strong></p>
 <p>前者指明指令的功能，后者指明指令操作的数据</p>
 <h3 id="基本格式——双操作数指令"><a href="#基本格式——双操作数指令" class="headerlink" title="基本格式——双操作数指令"></a>基本格式——双操作数指令</h3><p>MOV    AX，    BX</p>
@@ -655,9 +655,9 @@
 </blockquote>
 <h4 id="CMP比较指令"><a href="#CMP比较指令" class="headerlink" title="CMP比较指令"></a>CMP比较指令</h4><p>格式：CMP    DEST,    SRC</p>
 <p>功能：(DEST)-(SRC)</p>
-<p>不回送运算结果，只改变FR</p>
+<p>不回送运算结果，只改变FR，根据FR的内容可以判断六种大小关系</p>
 <h3 id="位操作类指令"><a href="#位操作类指令" class="headerlink" title="位操作类指令"></a>位操作类指令</h3><p>包括<strong>运算指令</strong>和<strong>位移指令</strong></p>
-<h4 id="AND与运算指令（取位）"><a href="#AND与运算指令（取位）" class="headerlink" title="AND与运算指令（取位）"></a>AND与运算指令（取位）</h4><p>格式：AND    DEST,    SRC</p>
+<h4 id="运算指令"><a href="#运算指令" class="headerlink" title="运算指令"></a>运算指令</h4><h5 id="AND与运算指令（取位，清零）"><a href="#AND与运算指令（取位，清零）" class="headerlink" title="AND与运算指令（取位，清零）"></a>AND与运算指令（取位，清零）</h5><p>格式：AND    DEST,    SRC</p>
 <p>功能：(DEST)&amp;(SRC)=&gt;DEST</p>
 <p>注意：</p>
 <ol>
@@ -665,16 +665,66 @@
 <li>CF\OF强制置零</li>
 <li>AF不确定</li>
 </ol>
-<h4 id="OR或运算（置位）"><a href="#OR或运算（置位）" class="headerlink" title="OR或运算（置位）"></a>OR或运算（置位）</h4><p>格式：OR    DESR</p>
-<h4 id="XOR异或指令（位求反）"><a href="#XOR异或指令（位求反）" class="headerlink" title="XOR异或指令（位求反）"></a>XOR异或指令（位求反）</h4><p>格式：XOR    DEST,    SRC</p>
-<h4 id="NOT非运算"><a href="#NOT非运算" class="headerlink" title="NOT非运算"></a>NOT非运算</h4><p>格式：NOT    DEST</p>
+<p><strong>取位操作</strong>时，将所取位设为“1”，其余为设为“0”</p>
+<p>例：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0110</span>(取位对象)&amp;<span class="hljs-number">0100</span>(取第三位)=<span class="hljs-number">0100</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>清零操作</strong>时，将所需清零位设为“0”，其余设为“1”</p>
+<p>例：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0110</span>(清零对象)&amp;<span class="hljs-number">1011</span>(将第三位清零)=<span class="hljs-number">0010</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="OR或运算（置位）"><a href="#OR或运算（置位）" class="headerlink" title="OR或运算（置位）"></a>OR或运算（置位）</h5><p>格式：OR    DESR</p>
+<p>注意：</p>
+<ol>
+<li>SF\ZF\PF与运算指令结果相同</li>
+<li>CF\OF强制置零</li>
+<li>AF不确定</li>
+</ol>
+<p><strong>置位操作</strong>时，将所需置位的位置设为“1”，其余为设为“0”</p>
+<p>例：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0110</span>(置位对象)|<span class="hljs-number">0001</span>(置第一位为<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="XOR异或指令（位求反）"><a href="#XOR异或指令（位求反）" class="headerlink" title="XOR异或指令（位求反）"></a>XOR异或指令（位求反）</h5><p>格式：XOR    DEST,    SRC</p>
+<p>注意：</p>
+<ol>
+<li>SF\ZF\PF与运算指令结果相同</li>
+<li>CF\OF强制置零</li>
+<li>AF不确定</li>
+</ol>
+<p><strong>位求反操作</strong>时，将所需求反位置“1”，其余为“0”</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0110</span>(受害者)异或<span class="hljs-number">0100</span>=<span class="hljs-number">0010</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="NOT非运算"><a href="#NOT非运算" class="headerlink" title="NOT非运算"></a>NOT非运算</h5><p>格式：NOT    DEST</p>
 <p>注意：</p>
 <ol>
 <li>不进ALU,<strong>不影响标志位</strong>.</li>
 </ol>
-<h4 id="TEXT测试指令"><a href="#TEXT测试指令" class="headerlink" title="TEXT测试指令"></a>TEXT测试指令</h4><p>格式:TEXT    DEST,    SRC</p>
+<h5 id="TEXT测试指令"><a href="#TEXT测试指令" class="headerlink" title="TEXT测试指令"></a>TEXT测试指令</h5><p>格式:TEXT    DEST,    SRC</p>
 <p>功能：(DEST)&amp;(SRC)</p>
-<p>只进行运算，改变FR，不保留结果</p>
+<p>只进行运算，改变FR，<strong>不保留结果</strong></p>
+<p>注意：</p>
+<ol>
+<li>SF\ZF\PF与运算指令结果相同</li>
+<li>CF\OF强制置零</li>
+<li>AF不确定</li>
+</ol>
+<h4 id="位移指令"><a href="#位移指令" class="headerlink" title="位移指令"></a>位移指令</h4><h5 id="SAL算术左移指令"><a href="#SAL算术左移指令" class="headerlink" title="SAL算术左移指令"></a>SAL算术左移指令</h5><p>格式：SAL    DEST,    COUNT</p>
+<p>功能：将DEST左移COUNT位，<strong>从左边移出的最后一位保存到CF中</strong>，右边的空位补充为“0”，等价于DEST^COUNT^</p>
+<p>注意：</p>
+<ol>
+<li>AF无意义</li>
+<li>仅当COUNT为1时，OF有意义</li>
+<li>SAL将目的操作数解释为<strong>补码</strong></li>
+</ol>
+<h5 id="SAR算数左移指令"><a href="#SAR算数左移指令" class="headerlink" title="SAR算数左移指令"></a>SAR算数左移指令</h5><p>格式：SAR    DEST,    COUNT</p>
+<p>功能：将DEST右移COUNT位，<strong>从右边移出的最后一位存到CF中</strong>，左边补充的空位补充为“0”</p>
+<hr>
 <p>都看到这里了，赏博主一杯咖啡吧！！</p>
 <p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/mm_facetoface_collect_qrcode_1618912890639.png" srcset="/img/loading.gif" lazyload></p>
 <p>也支持支付宝哦</p>
