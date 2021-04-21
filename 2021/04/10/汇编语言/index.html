@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.9k 字
+      5k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      78
+      81
        分钟
     </span>
   
@@ -714,16 +714,23 @@
 <li>CF\OF强制置零</li>
 <li>AF不确定</li>
 </ol>
-<h4 id="位移指令"><a href="#位移指令" class="headerlink" title="位移指令"></a>位移指令</h4><h5 id="SAL算术左移指令"><a href="#SAL算术左移指令" class="headerlink" title="SAL算术左移指令"></a>SAL算术左移指令</h5><p>格式：SAL    DEST,    COUNT</p>
-<p>功能：将DEST左移COUNT位，<strong>从左边移出的最后一位保存到CF中</strong>，右边的空位补充为“0”，等价于DEST^COUNT^</p>
+<h4 id="移位指令"><a href="#移位指令" class="headerlink" title="移位指令"></a>移位指令</h4><p>可以移8位，也可以移16位</p>
+<p>COUNT必须为CL，除非COUNT=1;</p>
+<h5 id="SAL算术左移指令"><a href="#SAL算术左移指令" class="headerlink" title="SAL算术左移指令"></a>SAL算术左移指令</h5><p>格式：SAL    DEST,    COUNT</p>
+<p>功能：将DEST左移COUNT位，<strong>从左边移出的最后一位保存到CF中</strong>，右边的<strong>空位补充为“0”</strong>，等价于DEST*2^COUNT^</p>
 <p>注意：</p>
 <ol>
 <li>AF无意义</li>
 <li>仅当COUNT为1时，OF有意义</li>
 <li>SAL将目的操作数解释为<strong>补码</strong></li>
 </ol>
+<p>例：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dns">移位前	CF	        	COUNT<br>移位前	<span class="hljs-number">0	10110011</span>	<span class="hljs-number">1</span><br>移位后	<span class="hljs-number">1	01100110</span>	<br>此时OF=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h5 id="SAR算数右移指令"><a href="#SAR算数右移指令" class="headerlink" title="SAR算数右移指令"></a>SAR算数右移指令</h5><p>格式：SAR    DEST,    COUNT</p>
-<p>功能：将DEST右移COUNT位，<strong>从右边移出的最后一位存到CF中</strong>，将DEST解释为补码，左边补充的空位补充DEST的符号位</p>
+<p>功能：将DEST右移COUNT位，<strong>从右边移出的最后一位存到CF中</strong>，将DEST解释为补码，左边的空位<strong>补充DEST的符号位</strong>，相当于DEST/2^COUNT^</p>
 <p>注意</p>
 <ol>
 <li>OF在SAR中始终为0</li>
@@ -740,7 +747,13 @@
 <ol>
 <li>OF只有在COUNT=1时有意义</li>
 </ol>
-<h5 id="ROL循环左移指令"><a href="#ROL循环左移指令" class="headerlink" title="ROL循环左移指令"></a>ROL循环左移指令</h5><h5 id="ROR循环右移指令"><a href="#ROR循环右移指令" class="headerlink" title="ROR循环右移指令"></a>ROR循环右移指令</h5><hr>
+<h5 id="ROL循环左移指令"><a href="#ROL循环左移指令" class="headerlink" title="ROL循环左移指令"></a>ROL循环左移指令</h5><p>格式：ROL    DEST,    COUNT</p>
+<p>功能：转圈左移，最后移出（移入）的进CF，仅当COUNT=1时OF有意义</p>
+<h5 id="ROR循环右移指令"><a href="#ROR循环右移指令" class="headerlink" title="ROR循环右移指令"></a>ROR循环右移指令</h5><p>格式：ROR    DEST,    COUNT</p>
+<p>功能：转圈右移，最后移出的（移入）进CF</p>
+<h5 id="RCL带进位的循环左移指令"><a href="#RCL带进位的循环左移指令" class="headerlink" title="RCL带进位的循环左移指令"></a>RCL带进位的循环左移指令</h5><p>格式：RCL    DEST,    COUNT</p>
+<h5 id="RCR带进位的循环右移指令"><a href="#RCR带进位的循环右移指令" class="headerlink" title="RCR带进位的循环右移指令"></a>RCR带进位的循环右移指令</h5><p>格式：RCR    DEST,    COUNT</p>
+<hr>
 <p>都看到这里了，赏博主一杯咖啡吧！！</p>
 <p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/mm_facetoface_collect_qrcode_1618912890639.png" srcset="/img/loading.gif" lazyload></p>
 <p>也支持支付宝哦</p>
