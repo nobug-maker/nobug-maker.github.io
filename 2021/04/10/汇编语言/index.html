@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5k 字
+      5.3k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      81
+      85
        分钟
     </span>
   
@@ -213,7 +213,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：几秒前
+                  本文最后更新于：8 小时前
                 
               </p>
             
@@ -752,7 +752,29 @@
 <h5 id="ROR循环右移指令"><a href="#ROR循环右移指令" class="headerlink" title="ROR循环右移指令"></a>ROR循环右移指令</h5><p>格式：ROR    DEST,    COUNT</p>
 <p>功能：转圈右移，最后移出的（移入）进CF</p>
 <h5 id="RCL带进位的循环左移指令"><a href="#RCL带进位的循环左移指令" class="headerlink" title="RCL带进位的循环左移指令"></a>RCL带进位的循环左移指令</h5><p>格式：RCL    DEST,    COUNT</p>
+<p>功能：带上CF一起转圈圈</p>
 <h5 id="RCR带进位的循环右移指令"><a href="#RCR带进位的循环右移指令" class="headerlink" title="RCR带进位的循环右移指令"></a>RCR带进位的循环右移指令</h5><p>格式：RCR    DEST,    COUNT</p>
+<p>功能：带上CF一起转圈圈</p>
+<h3 id="处理器控制类指令"><a href="#处理器控制类指令" class="headerlink" title="处理器控制类指令"></a>处理器控制类指令</h3><h4 id="CLC清除进位标志指令"><a href="#CLC清除进位标志指令" class="headerlink" title="CLC清除进位标志指令"></a>CLC清除进位标志指令</h4><p>功能：将CF清零</p>
+<h4 id="CMC进位标志取反指令"><a href="#CMC进位标志取反指令" class="headerlink" title="CMC进位标志取反指令"></a>CMC进位标志取反指令</h4><p>功能：将CF取反，再存在CF中</p>
+<h4 id="CLI清除中断标志指令"><a href="#CLI清除中断标志指令" class="headerlink" title="CLI清除中断标志指令"></a>CLI清除中断标志指令</h4><p>功能：将IF清零</p>
+<h4 id="HLT停机指令"><a href="#HLT停机指令" class="headerlink" title="HLT停机指令"></a>HLT停机指令</h4><p>功能：停止CPU的运转</p>
+<h4 id="ESC协处理器指令前缀"><a href="#ESC协处理器指令前缀" class="headerlink" title="ESC协处理器指令前缀"></a>ESC协处理器指令前缀</h4><p>用于8087</p>
+<h4 id="WAIT等待指令"><a href="#WAIT等待指令" class="headerlink" title="WAIT等待指令"></a>WAIT等待指令</h4><p>用于8087</p>
+<h4 id="LOCK总线封锁指令前缀"><a href="#LOCK总线封锁指令前缀" class="headerlink" title="LOCK总线封锁指令前缀"></a>LOCK总线封锁指令前缀</h4><h4 id="NOP空操作指令"><a href="#NOP空操作指令" class="headerlink" title="NOP空操作指令"></a>NOP空操作指令</h4><p>等三个节拍</p>
+<h1 id="汇编语言程序组织"><a href="#汇编语言程序组织" class="headerlink" title="汇编语言程序组织"></a>汇编语言程序组织</h1><p>汇编器提供组织汇编语言程序的方法</p>
+<h2 id="汇编语言语句格式"><a href="#汇编语言语句格式" class="headerlink" title="汇编语言语句格式"></a>汇编语言语句格式</h2><p>伪指令只存在在源文件，没有机器指令一一对应，</p>
+<h3 id="指令语句格式"><a href="#指令语句格式" class="headerlink" title="指令语句格式"></a>指令语句格式</h3><p><strong>标号：    指令助记符    操作数    ；注释</strong></p>
+<p>标号标注指令的存储位置</p>
+<p>操作数依次写</p>
+<p>每一行分号后的是注释</p>
+<p>标号的要求：</p>
+<ol>
+<li>字母打头</li>
+<li>需要标记的位置再标记，可以没有标号</li>
+</ol>
+<h3 id="伪指令语句格式"><a href="#伪指令语句格式" class="headerlink" title="伪指令语句格式"></a>伪指令语句格式</h3><p>伪指令语句：用于指示汇编程序如何汇编源程序。不产生机器指令代码，其操作在汇编环节完成</p>
+<p><strong>符号名    伪指令符    操作数    ；注释</strong></p>
 <hr>
 <p>都看到这里了，赏博主一杯咖啡吧！！</p>
 <p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/mm_facetoface_collect_qrcode_1618912890639.png" srcset="/img/loading.gif" lazyload></p>
