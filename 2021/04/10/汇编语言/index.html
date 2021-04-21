@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.8k 字
+      4.9k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      76
+      78
        分钟
     </span>
   
@@ -213,7 +213,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：20 小时前
+                  本文最后更新于：几秒前
                 
               </p>
             
@@ -722,9 +722,25 @@
 <li>仅当COUNT为1时，OF有意义</li>
 <li>SAL将目的操作数解释为<strong>补码</strong></li>
 </ol>
-<h5 id="SAR算数左移指令"><a href="#SAR算数左移指令" class="headerlink" title="SAR算数左移指令"></a>SAR算数左移指令</h5><p>格式：SAR    DEST,    COUNT</p>
-<p>功能：将DEST右移COUNT位，<strong>从右边移出的最后一位存到CF中</strong>，左边补充的空位补充为“0”</p>
-<hr>
+<h5 id="SAR算数右移指令"><a href="#SAR算数右移指令" class="headerlink" title="SAR算数右移指令"></a>SAR算数右移指令</h5><p>格式：SAR    DEST,    COUNT</p>
+<p>功能：将DEST右移COUNT位，<strong>从右边移出的最后一位存到CF中</strong>，将DEST解释为补码，左边补充的空位补充DEST的符号位</p>
+<p>注意</p>
+<ol>
+<li>OF在SAR中始终为0</li>
+</ol>
+<p>例：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AL</span> <span class="hljs-number">11100010</span><br><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">CL</span> <span class="hljs-number">2</span><br><span class="hljs-keyword">SAR</span> <span class="hljs-built_in">AL</span> <span class="hljs-built_in">CL</span><br><span class="hljs-built_in">AL</span>最后为<span class="hljs-number">11111000</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="SHL逻辑左移指令"><a href="#SHL逻辑左移指令" class="headerlink" title="SHL逻辑左移指令"></a>SHL逻辑左移指令</h5><p>格式：SHL    DEST,    COUNT</p>
+<p>功能：同SAL</p>
+<p>实质上SAL和SHL是同一条机器指令</p>
+<h5 id="SHR逻辑右移指令"><a href="#SHR逻辑右移指令" class="headerlink" title="SHR逻辑右移指令"></a>SHR逻辑右移指令</h5><p>格式：SHR    DEST,    COUNT</p>
+<p>功能：将DEST右移COUNT位，右边的空位补“0”，从右边移出的最后一位保存到CF</p>
+<p>注意：</p>
+<ol>
+<li>OF只有在COUNT=1时有意义</li>
+</ol>
+<h5 id="ROL循环左移指令"><a href="#ROL循环左移指令" class="headerlink" title="ROL循环左移指令"></a>ROL循环左移指令</h5><h5 id="ROR循环右移指令"><a href="#ROR循环右移指令" class="headerlink" title="ROR循环右移指令"></a>ROR循环右移指令</h5><hr>
 <p>都看到这里了，赏博主一杯咖啡吧！！</p>
 <p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/mm_facetoface_collect_qrcode_1618912890639.png" srcset="/img/loading.gif" lazyload></p>
 <p>也支持支付宝哦</p>
