@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.3k 字
+      5.5k 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      85
+      88
        分钟
     </span>
   
@@ -213,7 +213,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：16 天前
+                  本文最后更新于：3 天前
                 
               </p>
             
@@ -762,10 +762,12 @@
 <h4 id="ESC协处理器指令前缀"><a href="#ESC协处理器指令前缀" class="headerlink" title="ESC协处理器指令前缀"></a>ESC协处理器指令前缀</h4><p>用于8087</p>
 <h4 id="WAIT等待指令"><a href="#WAIT等待指令" class="headerlink" title="WAIT等待指令"></a>WAIT等待指令</h4><p>用于8087</p>
 <h4 id="LOCK总线封锁指令前缀"><a href="#LOCK总线封锁指令前缀" class="headerlink" title="LOCK总线封锁指令前缀"></a>LOCK总线封锁指令前缀</h4><h4 id="NOP空操作指令"><a href="#NOP空操作指令" class="headerlink" title="NOP空操作指令"></a>NOP空操作指令</h4><p>等三个节拍</p>
-<h1 id="汇编语言程序组织"><a href="#汇编语言程序组织" class="headerlink" title="汇编语言程序组织"></a>汇编语言程序组织</h1><p>汇编器提供组织汇编语言程序的方法</p>
-<h2 id="汇编语言语句格式"><a href="#汇编语言语句格式" class="headerlink" title="汇编语言语句格式"></a>汇编语言语句格式</h2><p>伪指令只存在在源文件，没有机器指令一一对应，</p>
-<h3 id="指令语句格式"><a href="#指令语句格式" class="headerlink" title="指令语句格式"></a>指令语句格式</h3><p><strong>标号：    指令助记符    操作数    ；注释</strong></p>
-<p>标号标注指令的存储位置</p>
+<h1 id="第六章-汇编语言程序组织"><a href="#第六章-汇编语言程序组织" class="headerlink" title="第六章 汇编语言程序组织"></a>第六章 汇编语言程序组织</h1><p><strong>汇编语言的指令</strong>不是汇编语言的全部，完备的汇编语言程程序还应包含<strong>常量</strong>和<strong>变量</strong>的定义、<strong>程序结构的描述</strong>、<strong>程序编译控制</strong>等——这些需要使用汇编语言的<strong>伪指令</strong>来实现。</p>
+<p>尽管汇编语言使符号化的机器语言，但不能被计算机直接识别和执行，必须同其他程序语言一样经过编译才能形成计算机能识别的机器代码。</p>
+<h2 id="6-1汇编语言的语句的种类和格式"><a href="#6-1汇编语言的语句的种类和格式" class="headerlink" title="6.1汇编语言的语句的种类和格式"></a>6.1汇编语言的语句的种类和格式</h2><p>汇编语句分为<strong>指令语句</strong>和<strong>伪指令语句</strong></p>
+<h3 id="6-1-1指令语句"><a href="#6-1-1指令语句" class="headerlink" title="6.1.1指令语句"></a>6.1.1指令语句</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">标号: 指令助记符 目标操作数表达式，源操作数表达式 ；注释</span><br></code></pre></td></tr></table></figure>
+
+<p>标号标注指令的存储位置。标号仅供编译器使用，在源代码中不会体现。</p>
 <p>操作数依次写</p>
 <p>每一行分号后的是注释</p>
 <p>标号的要求：</p>
@@ -773,14 +775,17 @@
 <li>字母打头</li>
 <li>需要标记的位置再标记，可以没有标号</li>
 </ol>
-<h3 id="伪指令语句格式"><a href="#伪指令语句格式" class="headerlink" title="伪指令语句格式"></a>伪指令语句格式</h3><p>伪指令语句：用于指示汇编程序如何汇编源程序。不产生机器指令代码，其操作在汇编环节完成</p>
-<p><strong>符号名    伪指令符    操作数    ；注释</strong></p>
+<h3 id="6-1-2伪指令语句格式"><a href="#6-1-2伪指令语句格式" class="headerlink" title="6.1.2伪指令语句格式"></a>6.1.2伪指令语句格式</h3><p>伪指令语句：用于指示汇编程序如何汇编源程序。不产生机器指令代码，其操作在汇编环节完成.</p>
+<p>伪指令指挥编译器工作、汇编语言指令指挥CPU工作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">符号名 伪指令符 操作数表达式1，操作数表达式2······ ；注释<br></code></pre></td></tr></table></figure>
+
+<p>**注意，符号名后没有</p>
 <hr>
 <p>都看到这里了，赏博主一杯咖啡吧！！</p>
 <p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/mm_facetoface_collect_qrcode_1618912890639.png" srcset="/img/loading.gif" lazyload></p>
 <p>也支持支付宝哦</p>
 <p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/1618913193481.jpg" srcset="/img/loading.gif" lazyload></p>
-<p>不会吧不会吧，真的有人忍心白嫖吗:stuck_out_tongue_winking_eye:</p>
+<p>不会吧不会吧，真的有人忍心白嫖吗:stuck_out_tongue_winking_eye: </p>
 
             </div>
             <hr>

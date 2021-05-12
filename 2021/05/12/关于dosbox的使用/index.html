@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>4/23 - Hexo</title>
+  <title>关于DOSBOX的使用 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -139,7 +139,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="4/23">
+            <span class="h2" id="subtitle" title="关于DOSBOX的使用">
               
             </span>
 
@@ -149,8 +149,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-23 23:35" pubdate>
-        2021年4月23日 晚上
+      <time datetime="2021-05-12 22:44" pubdate>
+        2021年5月12日 晚上
       </time>
     </span>
   
@@ -161,7 +161,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      283 字
+      217 字
     </span>
   
 
@@ -171,7 +171,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      3
        分钟
     </span>
   
@@ -209,41 +209,42 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">4/23</h1>
+            <h1 style="display: none">关于DOSBOX的使用</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：19 天前
+                  本文最后更新于：1 分钟前
                 
               </p>
             
             <div class="markdown-body">
-              <p>今天要写一点东西了</p>
-<p>不能总是拖来拖去</p>
-<p>今天，也是充实的一天</p>
-<p>C++课上看完了一部短片小说（也不能说是看完，还差了一章）（也不能完全说是小说，感觉怪怪的）</p>
-<p>《眠》</p>
-<p>阅读的时候有一种窒息的感觉，我不禁开始思考，我怎样能逃离或是避免成为她？我是否正在成为她？</p>
-<p>会有出路的</p>
-<p>C++之后是社交舞</p>
-<p>新的动作还是不熟练，但迷迷糊糊能完成，还是挺神奇的</p>
-<p>多练习吧</p>
-<p>我要让以后的广场命名为——王瀚弘广场[doge]</p>
-<p>中午把考试题做完了</p>
-<p>明明想睡觉，无果</p>
-<p><del>···</del></p>
-<p>停，不记流水账了</p>
-<p>晚上跑步的时候</p>
-<p>阴云密布，阴风怒号</p>
-<p>我的内心是很不安的</p>
-<p>生命的无力感</p>
-<p>仿佛灾难即将到来，可是我无力改变</p>
-<p>也许我的糟糕经历太多了吧，其中很多赶在了阴天</p>
-<p>难免对阴天有一些偏见</p>
-<p>想吃芒果了</p>
-<p>大不了麻烦一点咯</p>
-<p>算了~找机会再说</p>
-<p>录毕</p>
+              <h1 id="DOSBOX的下载和安装"><a href="#DOSBOX的下载和安装" class="headerlink" title="DOSBOX的下载和安装"></a>DOSBOX的下载和安装</h1><p>DOSBOX的安装包在文件夹里，安装说明里面也有，我就不说了，完全按照他来就可以。</p>
+<p><strong>一定要记住你的安装路径</strong></p>
+<h1 id="安装debug程序"><a href="#安装debug程序" class="headerlink" title="安装debug程序"></a>安装debug程序</h1><p>文件夹中有一个名为<code>MASM</code>的文件夹，其中包含了debug程序。</p>
+<p>将这个文件夹拷贝到C盘根目录下</p>
+<p>就像这样</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/20210512225244.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="修改窗口大小"><a href="#修改窗口大小" class="headerlink" title="修改窗口大小"></a>修改窗口大小</h1><p>根据你的安装路径</p>
+<p>打开配置文件中的<code>DOSBox 0.74-3 Options.bat</code>文件（在你的电脑上可能是<code>DOSBox 0.74-3 Options</code>）</p>
+<p>找到这样两行字</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">windowresolution</span>=original<br><span class="hljs-attr">output</span>=original<br></code></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">windowresolution</span>=<span class="hljs-number">2160</span>x1600<br><span class="hljs-attr">output</span>=opengl<br></code></pre></td></tr></table></figure>
+
+<p>保存后关闭该文件即可</p>
+<h1 id="文件挂载"><a href="#文件挂载" class="headerlink" title="文件挂载"></a>文件挂载</h1><p>双击桌面上的快捷方式打开DOSBOX</p>
+<p>1.输入命令,实现挂载</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">mount <span class="hljs-keyword">c</span> <span class="hljs-keyword">c</span>:\masa<br></code></pre></td></tr></table></figure>
+
+<p>2.输入命令，转换到C盘</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">c:</span><br></code></pre></td></tr></table></figure>
+
+<p>3.输入命令，进入debug程序</p>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs d"><span class="hljs-keyword">debug</span><br></code></pre></td></tr></table></figure>
+
+<p>如图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/nobug-maker/PicGoCDN@master/20210512230311.png" srcset="/img/loading.gif" lazyload></p>
 
             </div>
             <hr>
@@ -264,18 +265,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/24/4-24/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">4/24</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/04/22/4-22/">
-                        <span class="hidden-mobile">4/22</span>
+                      <a href="/2021/05/11/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/">
+                        <span class="hidden-mobile">汇编语言实验</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
